@@ -1,23 +1,22 @@
 import React from 'react';
 import { INSTAGRAM_INFO } from '../data/propertyData';
-import { Instagram, ArrowUpRight, Heart, MessageCircle, Sparkles } from 'lucide-react';
+import { Instagram, ArrowUpRight, Heart, MessageCircle, PhoneCall } from 'lucide-react';
 
 export const InstagramSection: React.FC = () => {
   const posts = [
     { image: '/images/samarth1.jpg', likes: '14', comments: '3' },
+    { image: '/images/flats.jpg', likes: '31', comments: '6' },
     { image: '/images/indravan.jpg', likes: '22', comments: '5' },
-    { image: '/images/samarth2.jpg', likes: '18', comments: '2' },
     { image: '/images/hero.jpg', likes: '29', comments: '7' },
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-white border-t border-stone-200/80 relative">
+    <section id="social" className="py-20 lg:py-28 bg-white border-t border-stone-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Profile Card Header */}
         <div className="bg-brand-ivory p-8 sm:p-10 rounded-3xl border border-stone-200 shadow-soft-sm max-w-4xl mx-auto mb-12 flex flex-col md:flex-row items-center justify-between gap-8">
           
-          {/* Avatar & Username */}
           <div className="flex items-center gap-5">
             <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 p-1 shadow-md shrink-0">
               <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center text-brand-orange">
@@ -41,7 +40,6 @@ export const InstagramSection: React.FC = () => {
                 {INSTAGRAM_INFO.description}
               </p>
 
-              {/* Stats Bar */}
               <div className="flex items-center gap-5 pt-3 text-xs font-bold text-stone-700">
                 <div>
                   <span className="text-brand-charcoal font-extrabold">{INSTAGRAM_INFO.postsCount}</span>{' '}
@@ -59,17 +57,28 @@ export const InstagramSection: React.FC = () => {
             </div>
           </div>
 
-          {/* CTA Button */}
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 text-white text-xs font-bold shadow-soft-md hover:shadow-lg transition-all shrink-0"
-          >
-            <Instagram className="w-4 h-4" />
-            <span>Visit Instagram</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
+          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 text-white text-xs font-bold shadow-soft-md hover:shadow-lg transition-all"
+            >
+              <Instagram className="w-4 h-4" />
+              <span>Visit Instagram</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+
+            <a
+              href="https://wa.me/919876543210?text=Hi%20Ritesh%20Realtors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-brand-green text-white text-xs font-bold shadow-soft-md hover:bg-brand-green-hover transition-all"
+            >
+              <PhoneCall className="w-4 h-4" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
 
         </div>
 
@@ -89,7 +98,6 @@ export const InstagramSection: React.FC = () => {
                 className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
               />
               
-              {/* Instagram Hover State */}
               <div className="absolute inset-0 bg-brand-charcoal/70 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6 text-white font-bold text-sm">
                 <div className="flex items-center gap-1.5">
                   <Heart className="w-4 h-4 fill-white" />

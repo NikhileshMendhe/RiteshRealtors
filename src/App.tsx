@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
-import { Project, EnquiryFormData, ToastState } from './types/realEstate';
+import { Project, PropertyCategory, EnquiryFormData, ToastState } from './types/realEstate';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { TrustSection } from './components/TrustSection';
 import { AboutSection } from './components/AboutSection';
 import { ProjectsSection } from './components/ProjectsSection';
-import { ProjectDetailModal } from './components/ProjectDetailModal';
-import { WhyChooseUs } from './components/WhyChooseUs';
-import { LocationSection } from './components/LocationSection';
-import { GallerySection } from './components/GallerySection';
-import { InstagramSection } from './components/InstagramSection';
+import { WhyInvestNagpur } from './components/WhyInvestNagpur';
 import { ContactSection } from './components/ContactSection';
-import { FinalCTA } from './components/FinalCTA';
+import { InstagramSection } from './components/InstagramSection';
 import { Footer } from './components/Footer';
 import { FloatingContact } from './components/FloatingContact';
+import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { ToastNotification } from './components/ToastNotification';
 
 export function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeCategory, setActiveCategory] = useState<PropertyCategory>('All');
   const [prefilledProperty, setPrefilledProperty] = useState<string>('');
   const [toast, setToast] = useState<ToastState>({
     show: false,
@@ -28,7 +25,7 @@ export function App() {
   const handleNavigate = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80;
+      const offset = 75;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -39,6 +36,10 @@ export function App() {
         behavior: 'smooth'
       });
     }
+  };
+
+  const handleSelectCategory = (cat: 'Plots' | 'Flats') => {
+    setActiveCategory(cat);
   };
 
   const handleViewDetails = (project: Project) => {
@@ -59,7 +60,7 @@ export function App() {
     });
   };
 
-  const handleQuickModalEnquiry = (propertyName: string, name: string, phone: string, message: string) => {
+  const handleQuickModalEnquiry = (propertyName: string, name: string, phone: string) => {
     setToast({
       show: true,
       title: 'Inquiry Submitted!',
@@ -71,58 +72,45 @@ export function App() {
   return (
     <div className="min-h-screen bg-brand-ivory text-brand-charcoal selection:bg-brand-orange selection:text-white font-sans">
       
-      {/* Sticky Navigation */}
+      {/* Sticky Navigation Header */}
       <Navbar onNavigate={handleNavigate} />
 
-      {/* Main Page Sections */}
+      {/* Main Page Sections strictly following requested hierarchy */}
       <main>
-        {/* Hero Section */}
+        {/* 1. Ultra Attractive Hero Section */}
         <Hero
           onExploreClick={() => handleNavigate('projects')}
           onContactClick={() => handleNavigate('contact')}
+          onSelectCategory={handleSelectCategory}
         />
 
-        {/* Trust & Introduction */}
-        <TrustSection />
+        {/* 2. About Us (Owner Photo & Developer Profile) */}
+        <AboutSection onContactClick={() => handleNavigate('contact')} />
 
-        {/* About Ritesh Realtors */}
-        <AboutSection onExploreClick={() => handleNavigate('projects')} />
-
-        {/* Featured Projects Centerpiece */}
+        {/* 3. Properties Portfolio: Plots & Flats */}
         <ProjectsSection
+          activeCategory={activeCategory}
           onViewDetails={handleViewDetails}
           onEnquire={handleEnquireProject}
         />
 
-        {/* Why Choose Us */}
-        <WhyChooseUs />
+        {/* 4. Why to Invest in Nagpur */}
+        <WhyInvestNagpur onExploreClick={() => handleNavigate('projects')} />
 
-        {/* Location & Connectivity */}
-        <LocationSection onAskLocation={() => handleNavigate('contact')} />
-
-        {/* See The Properties Visual Gallery */}
-        <GallerySection />
-
-        {/* Instagram / Social Presence */}
-        <InstagramSection />
-
-        {/* Enquiry / Contact Form */}
+        {/* 5. Contact Us & Enquiry Form */}
         <ContactSection
           onFormSubmit={handleFormSubmit}
           prefilledProperty={prefilledProperty}
         />
 
-        {/* Final CTA Banner */}
-        <FinalCTA
-          onExploreClick={() => handleNavigate('projects')}
-          onContactClick={() => handleNavigate('contact')}
-        />
+        {/* 6. Social Links & Instagram Presence */}
+        <InstagramSection />
       </main>
 
-      {/* Footer */}
+      {/* 7. Footer */}
       <Footer onNavigate={handleNavigate} />
 
-      {/* Floating Bottom Contact Widget */}
+      {/* Floating Contact Widget */}
       <FloatingContact onOpenEnquiry={() => handleNavigate('contact')} />
 
       {/* Project Detail Modal */}

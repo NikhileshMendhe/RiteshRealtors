@@ -1,117 +1,106 @@
 import React from 'react';
-import { CheckCircle2, ShieldCheck, Map, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, MapPin, PhoneCall, Award } from 'lucide-react';
 
 interface AboutSectionProps {
-  onExploreClick: () => void;
+  onContactClick: () => void;
 }
 
-export const AboutSection: React.FC<AboutSectionProps> = ({ onExploreClick }) => {
+export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) => {
   return (
-    <section id="about" className="py-20 lg:py-28 bg-white relative overflow-hidden">
+    <section id="about" className="py-20 lg:py-24 bg-white relative overflow-hidden border-b border-stone-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Editorial Content */}
-          <div className="lg:col-span-6 space-y-6">
+          {/* Left Column: Owner & Developer Photo */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative mx-auto max-w-md lg:max-w-none">
+              
+              {/* Main Owner Photo Container */}
+              <div className="rounded-3xl overflow-hidden shadow-soft-lg border-4 border-white bg-stone-100 relative group">
+                <img
+                  src="/images/owner.jpg"
+                  alt="Developer Ritesh Realtors"
+                  className="w-full h-[400px] sm:h-[460px] object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-transparent to-transparent opacity-90" />
+
+                <div className="absolute bottom-5 left-5 right-5 text-white">
+                  <div className="inline-block px-3 py-1 rounded-md bg-brand-orange text-[10px] font-extrabold uppercase tracking-wider mb-1">
+                    Promoter • Builder • Developer
+                  </div>
+                  <h3 className="font-serif text-2xl font-bold">Ritesh Realtors Leadership</h3>
+                  <p className="text-xs text-stone-300 font-sans mt-0.5">Nagpur Real Estate Development</p>
+                </div>
+              </div>
+
+              {/* Floating Badge */}
+              <div className="absolute -top-4 -right-4 bg-white p-3.5 rounded-2xl border border-stone-200 shadow-soft-md flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-xl bg-brand-orange-50 text-brand-orange flex items-center justify-center font-bold">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-brand-charcoal">Direct Promoter Assistance</div>
+                  <div className="text-[11px] text-stone-500 font-medium">Clear Titles & NATP Sanction</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Right Column: Owner Introduction & Vision */}
+          <div className="lg:col-span-7 space-y-6">
             
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-green-50 text-brand-green text-xs font-bold uppercase tracking-wider border border-brand-green/20">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Promoter • Builder • Developers</span>
+              <Award className="w-3.5 h-3.5" />
+              <span>ABOUT US & DEVELOPER VISION</span>
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-charcoal leading-[1.2]">
-              Local Knowledge. <br />
-              <span className="text-brand-orange italic font-normal">Real Opportunities.</span> <br />
-              A Better Way to Find Your Plot.
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-charcoal leading-tight">
+              Personalized Guidance, <br />
+              <span className="text-brand-orange italic font-normal">Clear Titles & Planned</span> Growth.
             </h2>
 
             <p className="text-stone-600 text-base sm:text-lg leading-relaxed font-sans">
-              Ritesh Realtors is a promoter, builder and developer focused on bringing residential and commercial plot opportunities to customers around Nagpur.
+              Ritesh Realtors is a premier promoter, builder and developer bringing residential & commercial plot opportunities and modern apartments to customers around Nagpur.
             </p>
 
-            <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
-              Our goal is to present well-planned property options — such as NATP sanctioned layouts, 60 ft and 200 ft road-touch developments, and interest-free installment plans — so buyers can make clear, confident decisions for their family and financial future.
-            </p>
+            <div className="bg-brand-ivory p-5 rounded-2xl border border-stone-200 space-y-2">
+              <h4 className="text-xs font-bold text-brand-orange uppercase tracking-wider">Owner’s Commitment</h4>
+              <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-medium">
+                "We believe in complete transparency, structured 60ft/200ft road touch layouts, and flexible payment plans so every buyer can comfortably secure their property in Nagpur."
+              </p>
+            </div>
 
-            {/* Key Pillars Checklist */}
-            <div className="pt-4 space-y-3">
+            {/* Checklist */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               {[
-                'Focus on prime Nagpur sectors including Mouza Chimnazari and Umred Road corridor',
-                'NATP Sanctioned layouts with planned DP roads and boundary demarcations',
-                'Structured payment solutions including 25% down payment and up to 36-month installment options',
-                'Direct promoter assistance for site visits and property information'
+                'NATP Sanctioned Plot Layouts',
+                'Mouza Chimnazari & Umred Road',
+                '25% Down Payment & Easy EMI',
+                '2 & 3 BHK Modern Apartments'
               ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-brand-green shrink-0 mt-0.5" />
-                  <span className="text-sm font-medium text-stone-700 leading-snug">{item}</span>
+                <div key={idx} className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-brand-green shrink-0" />
+                  <span className="text-xs font-bold text-stone-700">{item}</span>
                 </div>
               ))}
             </div>
 
-            <div className="pt-4">
+            <div className="pt-2">
               <button
-                onClick={onExploreClick}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-brand-charcoal text-white text-sm font-bold shadow-soft-md hover:bg-brand-orange transition-colors duration-300"
+                onClick={onContactClick}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-brand-orange hover:bg-brand-orange-hover text-white text-xs font-bold shadow-soft-md hover:shadow-glow-orange transition-all"
               >
-                <span>Explore Available Layouts</span>
-                <ArrowRight className="w-4 h-4" />
+                <PhoneCall className="w-4 h-4" />
+                <span>Talk Directly to Ritesh Realtors</span>
               </button>
             </div>
 
           </div>
 
-          {/* Right Column: Layered Visual Composition */}
-          <div className="lg:col-span-6 relative">
-            
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              
-              {/* Primary Main Image Frame */}
-              <div className="rounded-3xl overflow-hidden shadow-soft-lg border-4 border-white bg-stone-100 relative group">
-                <img
-                  src="/images/samarth1.jpg"
-                  alt="Samarth Nagari 1 Mouza Chimnazari"
-                  className="w-full h-[360px] sm:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/70 via-transparent to-transparent" />
-                
-                <div className="absolute bottom-5 left-5 right-5 text-white">
-                  <div className="text-xs font-mono font-bold text-brand-orange-light uppercase tracking-wider mb-1">
-                    Featured Layout Presentation
-                  </div>
-                  <h3 className="font-serif text-xl font-bold">Samarth Nagari – 1 @ Mouza Chimnazari</h3>
-                </div>
-              </div>
-
-              {/* Secondary Layered Image Overlay */}
-              <div className="absolute -bottom-10 -left-6 sm:-left-10 w-[220px] sm:w-[280px] rounded-2xl overflow-hidden shadow-soft-lg border-4 border-white hidden sm:block">
-                <img
-                  src="/images/indravan.jpg"
-                  alt="Indravan City Layout"
-                  className="w-full h-[160px] sm:h-[200px] object-cover"
-                />
-                <div className="absolute bottom-2 left-3 right-3 text-white">
-                  <span className="text-[10px] font-bold bg-brand-green/90 px-2 py-0.5 rounded text-white uppercase">
-                    Indravan City
-                  </span>
-                </div>
-              </div>
-
-              {/* Floating Badge Card */}
-              <div className="absolute top-6 -right-4 sm:-right-8 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-stone-200 shadow-soft-md flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-brand-orange-50 text-brand-orange flex items-center justify-center font-bold">
-                  <Map className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-brand-charcoal">Nagpur Metro Region</div>
-                  <div className="text-[11px] text-stone-500">Residential & Commercial Plots</div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
         </div>
+
       </div>
     </section>
   );

@@ -19,8 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
         setScrolled(false);
       }
 
-      // Simple active link tracker
-      const sections = ['home', 'about', 'projects', 'why-us', 'gallery', 'location', 'contact'];
+      const sections = ['home', 'about', 'projects', 'why-nagpur', 'contact', 'social'];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -40,11 +39,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About Us' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'why-us', label: 'Why Us' },
-    { id: 'gallery', label: 'Gallery' },
-    { id: 'location', label: 'Location' },
+    { id: 'projects', label: 'Plots & Flats' },
+    { id: 'why-nagpur', label: 'Why Nagpur' },
     { id: 'contact', label: 'Contact' },
+    { id: 'social', label: 'Social' },
   ];
 
   const handleLinkClick = (id: string) => {
@@ -56,12 +54,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-soft-sm py-3 border-b border-brand-ivory-border/80'
-          : 'bg-transparent py-5'
+          ? 'bg-white/95 backdrop-blur-md shadow-soft-sm py-2.5 border-b border-stone-200/80'
+          : 'bg-transparent py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
+          
           {/* Brand Logo */}
           <a
             href="#home"
@@ -74,14 +73,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 bg-white/70 backdrop-blur-sm px-4 py-1.5 rounded-full border border-brand-ivory-border/60 shadow-soft-sm">
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-stone-200 shadow-soft-sm">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => handleLinkClick(item.id)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 ${
                     isActive
                       ? 'bg-brand-orange text-white shadow-sm'
                       : 'text-brand-charcoal hover:text-brand-orange hover:bg-brand-orange-50/50'
@@ -93,20 +92,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             })}
           </nav>
 
-          {/* Right Desktop CTA */}
+          {/* Right Desktop CTAs */}
           <div className="hidden md:flex items-center space-x-3">
             <a
               href="tel:+919876543210"
-              className="p-2.5 rounded-full text-brand-charcoal hover:text-brand-orange hover:bg-brand-orange-50 transition-colors"
+              className="p-2 rounded-full text-brand-charcoal hover:text-brand-orange hover:bg-brand-orange-50 transition-colors"
               title="Call Ritesh Realtors"
             >
-              <PhoneCall className="w-4 h-4" />
+              <PhoneCall className="w-4 h-4 text-brand-orange" />
             </a>
+
             <button
               onClick={() => handleLinkClick('projects')}
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-orange to-brand-orange-hover text-white text-xs font-bold shadow-soft-sm hover:shadow-glow-orange hover:-translate-y-0.5 transition-all duration-300"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-orange to-brand-orange-hover text-white text-xs font-bold shadow-soft-sm hover:shadow-glow-orange transition-all duration-300"
             >
-              <span>View Projects</span>
+              <span>Explore Projects</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           <div className="flex md:hidden items-center space-x-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl bg-white/90 border border-brand-ivory-border shadow-soft-sm text-brand-charcoal hover:text-brand-orange transition-colors"
+              className="p-2.5 rounded-xl bg-white border border-stone-200 shadow-soft-sm text-brand-charcoal hover:text-brand-orange transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -126,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-xl border-b border-brand-ivory-border shadow-soft-lg transition-all duration-300 animate-in slide-in-from-top">
+        <div className="md:hidden bg-white/95 backdrop-blur-xl border-b border-stone-200 shadow-soft-lg transition-all duration-300">
           <div className="px-5 pt-3 pb-6 space-y-2">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
@@ -151,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                 onClick={() => handleLinkClick('projects')}
                 className="w-full text-center py-3 rounded-xl bg-gradient-to-r from-brand-orange to-brand-orange-hover text-white text-sm font-bold shadow-glow-orange"
               >
-                View Projects
+                Explore Projects
               </button>
               <a
                 href="tel:+919876543210"

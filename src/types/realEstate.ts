@@ -1,4 +1,4 @@
-export type PropertyType = 'Residential' | 'Commercial' | 'Both';
+export type PropertyCategory = 'All' | 'Plots' | 'Flats' | 'Commercial';
 
 export interface ProjectSpec {
   iconName: string;
@@ -12,7 +12,7 @@ export interface Project {
   tagline: string;
   location: string;
   areaRegion: string;
-  type: PropertyType;
+  category: 'Plots' | 'Flats' | 'Commercial';
   startingPrice?: string;
   image: string;
   badge?: string;
@@ -27,7 +27,7 @@ export interface GalleryItem {
   id: string;
   title: string;
   projectRef: string;
-  category: 'Layout Plan' | 'Entrance & Road' | 'Aerial Overview' | 'Amenities';
+  category: 'Layout Plan' | 'Residential Flats' | 'Entrance & Road' | 'Aerial Overview';
   imageUrl: string;
   caption: string;
   details: string[];

@@ -64,7 +64,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </span>
                 )}
                 <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-semibold">
-                  {project.type} Plots
+                  {project.category}
                 </span>
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold">{project.name}</h2>
