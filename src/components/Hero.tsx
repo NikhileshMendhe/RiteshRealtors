@@ -244,15 +244,19 @@ export const Hero: React.FC<HeroProps> = ({
                 overflow-hidden
                 rounded-full
                 border
-                border-stone-200
+                border-brand-green/30
                 bg-white
+                shadow-soft-sm
+                group-hover:border-brand-orange
+                transition-all
+                duration-300
               "
             >
-              <Building2 className="h-5 w-5 text-brand-charcoal" />
-
-              <span className="absolute bottom-0 left-0 right-0 h-[3px] bg-brand-orange" />
-
-              <span className="absolute right-[5px] top-[5px] h-1.5 w-1.5 rounded-full bg-brand-orange" />
+              <img
+                src="/images/logo.png"
+                alt="Ritesh Realtors Logo"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
 
             <div className="text-left">
